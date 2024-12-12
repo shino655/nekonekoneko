@@ -2,71 +2,13 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=720, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ねこねこ</title>
-    <style>
-       body{
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
-            position: relative;
-            background-image: url(background.png);
-            background-position: center center;
-            background-size:390px,844px;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-       }
-       
-        img {
-            max-width: 100px;
-            max-height: 100px;
-            position: absolute;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- 画像が追加されるコンテナ -->
     <div id="image-container"></div>
-
-    <script>
-        // 画像のパスの配列
-        const images = [
-            'neko1.png',
-            'neko2.png',
-            'neko3.png.',
-            'neko4.png.',
-            'neko5.png',
-            'neko6.png',
-            'neko7.png.',
-            'neko8.png.',
-            'neko9.png',
-            'neko10.png',
-            'neko11.png.',
-            'neko12.png.',
-            'neko13.png',
-            'neko14.png',
-            'neko15.png.',
-        ];
-
-        // 画面タップ時の処理
-        document.body.addEventListener('click', function(event) {
-            // ランダムに画像を選択
-            const randomImage = images[Math.floor(Math.random() * images.length)];
-
-            // 画像要素を作成
-            const imgElement = document.createElement('img');
-            imgElement.src = randomImage;
-
-            // クリックされた場所に画像を表示
-            imgElement.style.left = `${event.pageX - 50}px`; // 画像の中心をタップ位置にする
-            imgElement.style.top = `${event.pageY - 50}px`;
-
-            // 画像をコンテナに追加
-            document.getElementById('image-container').appendChild(imgElement);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
