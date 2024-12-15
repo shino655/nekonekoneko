@@ -31,11 +31,11 @@ document.body.addEventListener('click', function(event) {
     // ランダムに特別な画像が出るか判定
     const randomChance = Math.random() * 100; // 0〜99.999...
     if (randomChance < 1) {
-        selectedImage = specialImages.nekogold; // 1/100の確率
+        selectedImage = specialImages.gold; // 1/100の確率
     } else if (randomChance < 3) {
-        selectedImage = specialImages.nekosilver; // 2/100の確率 (50分の1)
+        selectedImage = specialImages.silver; // 2/100の確率 (50分の1)
     } else if (randomChance < 8) {
-        selectedImage = specialImages.nekobronze; // 5/100の確率 (20分の1)
+        selectedImage = specialImages.bronze; // 5/100の確率 (20分の1)
     } else {
         // 通常画像
         selectedImage = images[Math.floor(Math.random() * images.length)];
