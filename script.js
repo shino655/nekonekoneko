@@ -17,14 +17,33 @@ const images = [
     'neko15.png'
 ];
 
+// 特別な画像
+const specialImages = {
+    gold: 'nekogold.png',
+    silver: 'nekosilver.png',
+    bronze: 'nekobronze.png'
+};
+
 // 画面タップ時の処理
 document.body.addEventListener('click', function(event) {
-    // ランダムに画像を選択
-    const randomImage = images[Math.floor(Math.random() * images.length)];
+    let selectedImage;
+
+    // ランダムに特別な画像が出るか判定
+    const randomChance = Math.random() * 100; // 0〜99.999...
+    if (randomChance < 1) {
+        selectedImage = specialImages.gold; // 1/100の確率
+    } else if (randomChance < 3) {
+        selectedImage = specialImages.silver; // 2/100の確率 (50分の1)
+    } else if (randomChance < 8) {
+        selectedImage = specialImages.bronze; // 5/100の確率 (20分の1)
+    } else {
+        // 通常画像
+        selectedImage = images[Math.floor(Math.random() * images.length)];
+    }
 
     // 画像要素を作成
     const imgElement = document.createElement('img');
-    imgElement.src = randomImage;
+    imgElement.src = selectedImage;
 
     // 画像読み込みエラー時の処理
     imgElement.onerror = function() {
@@ -44,3 +63,4 @@ document.body.addEventListener('click', function(event) {
         setTimeout(() => imgElement.remove(), 500); // フェードアウト後に削除
     }, 2000);
 });
+
