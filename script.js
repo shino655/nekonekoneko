@@ -1,3 +1,4 @@
+
 // 画像のパスの配列
 const images = [
     'neko1.png',
@@ -24,6 +25,20 @@ const specialImages = {
     bronze: 'nekobronze.png'
 };
 
+// 鳴き声ファイルのパス
+const sounds = [
+    'meow1.mp3',
+    'meow2.mp3',
+    'meow3.mp3'
+];
+
+// 鳴き声を再生する関数
+function playRandomMeow() {
+    const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+    const audio = new Audio(randomSound);
+    audio.play();
+}
+
 // 画面タップ時の処理
 document.body.addEventListener('click', function(event) {
     let selectedImage;
@@ -39,6 +54,7 @@ document.body.addEventListener('click', function(event) {
     } else {
         // 通常画像
         selectedImage = images[Math.floor(Math.random() * images.length)];
+        playRandomMeow(); // 通常画像の場合、鳴き声を再生
     }
 
     // 画像要素を作成
@@ -63,4 +79,3 @@ document.body.addEventListener('click', function(event) {
         setTimeout(() => imgElement.remove(), 500); // フェードアウト後に削除
     }, 2000);
 });
-
