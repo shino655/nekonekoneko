@@ -1,4 +1,3 @@
-
 // 画像のパスの配列
 const images = [
     'neko1.png',
@@ -32,10 +31,19 @@ const sounds = [
     'meow3.mp3'
 ];
 
+// ゴールド専用効果音
+const goldenSound = 'golden_sound.mp3';
+
 // 鳴き声を再生する関数
 function playRandomMeow() {
     const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
     const audio = new Audio(randomSound);
+    audio.play();
+}
+
+// ゴールド効果音を再生する関数
+function playGoldenSound() {
+    const audio = new Audio(goldenSound);
     audio.play();
 }
 
@@ -47,6 +55,7 @@ document.body.addEventListener('click', function(event) {
     const randomChance = Math.random() * 100; // 0〜99.999...
     if (randomChance < 1) {
         selectedImage = specialImages.gold; // 1/100の確率
+        playGoldenSound(); // ゴールドの場合、専用効果音を再生
     } else if (randomChance < 3) {
         selectedImage = specialImages.silver; // 2/100の確率 (50分の1)
     } else if (randomChance < 8) {
